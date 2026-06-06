@@ -39,7 +39,7 @@ impl KeyAction {
     }
 }
 
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy, PartialEq)]
 pub enum KeyType {
     AddKey,
     Keybind,
@@ -47,7 +47,6 @@ pub enum KeyType {
     None,
 }
 
-#[derive(Debug)]
 pub struct XKeyClicker {
     pub keybind: Mutex<Key>,
     pub should_recv: Mutex<KeyType>,
@@ -169,7 +168,3 @@ impl Cooldown {
     }
 }
 
-pub struct SendBox<T>(pub T);
-
-unsafe impl<T> Send for SendBox<T> {}
-unsafe impl<T> Sync for SendBox<T> {}
